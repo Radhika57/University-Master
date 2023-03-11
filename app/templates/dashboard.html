@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main-content %}
+
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if messages %}
+    <div class="container"> 
+      <div class="row">
+        <div class='col-1'></div>
+        <div class="col-10 mt-3" >
+          {% for m in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h5 {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ m }}</h5>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+            {% endfor %} 
+        </div>
+        <div class='col-1'></div>
+      </div>
+    </div>
+        {% endif %}
+    <div class="container-fluid">
+      <div class="main">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <div class="result">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <div class="side_img">
+                        <img src={% static 'images/image1.jpg' %} alt="jhgfd" class="img_style" srcset="">
+                      </div>
+                    </div>
+                    <div class="col-md-6  col-sm-12" style="background-color: rgb(106, 30, 30);padding:20px">
+                      <div class="row">
+                        <div class="col-md-12">
+
+                          <div id="div_id_name" class="mb-3">
+                            <label for="id_name" class="form-label requiredField label_field">
+                              Name<span class="asteriskField">*</span> </label>
+                            <select name="university_id" class="select form-select select_field" required id="id_name">
+                              <option value="" selected>Select</option>
+                              {% for i in data %}
+                              <option value={{i.id}}>{{i.name}}</option>
+                              {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div id="div_id_registration_no" class="mb-3">
+                            <label for="id_registration_no" class="form-label requiredField label_field">Registration no
+                              <span class="asteriskField">*</span>
+                            </label>
+                            <input type="number" name="registration_no" class="numberinput form-control" required
+                              id="id_registration_no">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div id="div_id_result" class="mb-3"> <label for="id_result"
+                              class="form-label requiredField label_field">
+                              Result<span class="asteriskField">*</span> </label>
+                            <div> <input type="file" name="result" class="form-control" accept="image/*" id="id_result"
+                                required> </div>
+                          </div>
+
+
+                        </div>
+                      </div>
+                      <button type="submit" class='submit_btn'>
+                        Add
+                      </button>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+{% endblock main-content %}

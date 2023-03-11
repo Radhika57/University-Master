@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main-content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-1 col-sm-12">
+
+        </div>
+        <div class="col-md-10 col-sm-12">
+            <table class="table field_td">
+                <thead>
+                    <tr>
+                        <th>University Name</th>
+                        <th>Registration No</th>
+                        <th>Result</th>
+                        <th>Download</th>
+                        {% if request.user.is_superuser == True %}
+                        <th>Delete</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in students %}
+                    <tr>
+    
+                        <td>{{ i.university_name }}</td>
+                        <td>{{ i.registration_no }}</td>
+                        <td><img src="{{i.student_result.url}}" alt="" class="card-img-top" height="80" width="80"></td>
+                        <td class="text-center"><a href="{{i.student_result.url}}" download><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                                    class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z" />
+                                </svg></a></td>
+                        <td>
+                            {% if request.user.is_superuser == True %}
+                                          
+                                          <div class="col-md-4">
+                                            <a href="{% url 'delete' i.id %}" class="text-gray m-r-15"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                              </svg></a>
+                                           </div> 
+                                    
+                                                                                
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-1 col-sm-12">
+
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
