@@ -15,7 +15,7 @@ class Student(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     university_name = models.ForeignKey(University,on_delete=models.CASCADE)  
     registration_no = models.IntegerField()
-    student_result = models.ImageField(upload_to = 'result')
+    student_result = models.FileField(upload_to = 'result')
 
     def __str__(self):
         return str(self.registration_no)

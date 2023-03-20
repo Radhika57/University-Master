@@ -27,7 +27,8 @@
     
                         <td>{{ i.university_name }}</td>
                         <td>{{ i.registration_no }}</td>
-                        <td><img src="{{i.student_result.url}}" alt="" class="card-img-top" height="80" width="80"></td>
+                        <td>{{i.student_result}}</td>
+                        {% comment %} <td><img src="{{i.student_result.url}}" alt="" class="card-img-top" height="80" width="80"></td> {% endcomment %}
                         <td class="text-center"><a href="{{i.student_result.url}}" download><svg
                                     xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
                                     class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
