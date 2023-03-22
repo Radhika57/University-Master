@@ -16,7 +16,8 @@ class StudentList(generics.ListAPIView):
         
         student = Student.objects.filter(registration_no=reg)
 
-       
+        temp=student[0].id
+        print(temp)
         return student
     
 
